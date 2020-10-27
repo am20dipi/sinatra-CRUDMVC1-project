@@ -5,5 +5,6 @@ class CreateNailpolishes < ActiveRecord::Migration
       t.string :brand
       t.string :color
       t.integer :user_id
+    end
   end
 end
