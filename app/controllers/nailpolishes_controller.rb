@@ -26,7 +26,7 @@ class NailPolishesController < ApplicationController
 
     post '/nailpolishes' do 
         user = User.find_by(id: params[:user_id])
-        nailpolish = user.nailpolish.build(params) # .build creates but does NOT SAVE
+        nailpolish = user.nailpolishes.build(params) # .build creates but does NOT SAVE
         if nailpolish.save # .save returns true or false
             redirect "/nailpolishes/#{nailpolish.id}"
         else
