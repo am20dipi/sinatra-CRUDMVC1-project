@@ -3,7 +3,8 @@
     <body>
         <h1>Nail Polishes</h1>
         <hr>
-        <% @nailpolishes.each do |n| %>
+        <br>
+        <% @nailpolishes.each do |n| %> 
             <p><a href="/nailpolishes/<%= n.id %>"><%= n.name %></a></p>
         <% end %>
         <a href="/nailpolishes/new">Add a Nail Polish</a>
