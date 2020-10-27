@@ -1,16 +1,28 @@
-require './config/environment'
+#require './config/environment'
 
 class ApplicationController < Sinatra::Base
-
-  #set :views, Proc.new { File.join(root, "../views/") }
+  register Sinatra::ActiveRecordExtension
+  set :views, Proc.new { File.join(root, "../views/") }
 
   configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
+    enable :sessions
+    set :session_secret, "secret"
   end
 
-  get "/" do
-    erb :welcome
+  get '/' do
+    erb :home
+  end
+
+  get '/registrations/signup' do
+    erb :'/registrations/signup'
+  end
+
+  post '/registrations' do
+    @user = User.new(name: params["name"], email: params["email"], password: params["password"])
+    @user.save
+    session[:id] = @user.id
+
+    redirect '/users/home'
   end
 
   get '/sessions/login' do
