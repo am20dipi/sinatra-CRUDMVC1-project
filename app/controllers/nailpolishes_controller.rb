@@ -9,13 +9,18 @@ class NailPolishesController < ApplicationController
         erb :index 
     end
   
-    get '/nailpolishes/:id' do 
-        @nailpolish = NailPolish.new(params[:id])
-        erb :show 
+    get '/nailpolishes/:id' do # :id puts a key in the params hash
+        @nailpolish = NailPolish.find_by(id: params[:id])
+
+        if @nailpolish
+            erb :show 
+        else
+            redirect '/nailpolishes'
+        end
     end
   
     get '/nailpolishes/new' do 
-        @users = User.all
+        @users = User.all #gives access to the users
         erb :new
     end
 

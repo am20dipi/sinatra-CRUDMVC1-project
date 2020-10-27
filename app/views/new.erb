@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
-
     <h2> Create a New Nail Polish</h2>
     <hr>
     <br>
-
     <form action="/nailpolishes" method="POST">
-        <label for "name">Select User:</label>
+        <label>Select User:</label> 
         <select name="user_id">
             <% @users.each do |user|%>
                 <option value="<%= user.id %>"><%= user.name %></option>
