@@ -1,7 +1,7 @@
 class NailPolishesController < ApplicationController
     
     get '/' do
-        
+        erb :welcome
     end
   
     get '/nailpolishes' do 
@@ -9,12 +9,10 @@ class NailPolishesController < ApplicationController
         erb :index 
     end
   
-  
     get '/nailpolishes/:id' do 
         @nailpolish = NailPolish.new(params[:id])
         erb :show 
     end
-  
   
     get '/nailpolishes/new' do 
         @users = User.all
