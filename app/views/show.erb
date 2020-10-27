@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2><%= @nailpolish.title %></h2>
+        <p><%= @nailpolish.body %></p>
+        <form method="POST" action="/nailpolishes/<%= @nailpolish.id %>/delete">
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <input type="submit" value="delete">
+        </form>
+    </body>
+
+</html>
