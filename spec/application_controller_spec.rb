@@ -1,4 +1,5 @@
 require_relative "spec_helper"
+require_relative '../config/environment'
 
 def app
   ApplicationController
