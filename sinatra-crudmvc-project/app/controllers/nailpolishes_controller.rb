@@ -1,0 +1,4 @@
+class NailPolishesController < ApplicationController
+
+
+end
