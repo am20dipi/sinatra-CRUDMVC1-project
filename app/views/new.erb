@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+    <h2> Create a New Nail Polish</h2>
+    <hr>
+    <br>
+
+    <form action="/nailpolishes" method="POST">
+        <label for "name">Select User:</label>
+        <select name="user_id">
+            <% @users.each do |user|%>
+                <option value="<%= user.id %>"><%= user.name %></option>
+            <% end %>
+        </select>
+        <br>
+        <label>Name: <input type ="text" id="name" name="name"></label><br>
+        <label>Brand: <input type="text" id="brand" name="brand"></label><br>
+        <label>Color: <input type="text" id="color" name="color"></label><br>
+        <input type="submit">
+    </form>
+</html>
