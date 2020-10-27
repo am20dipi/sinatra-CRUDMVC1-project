@@ -8,7 +8,8 @@ end
 
 
 
-use Rack::MethodOverride
+#use Rack::MethodOverride
 use NailPolishesController
+use UsersController
 use SessionsController
 run ApplicationController

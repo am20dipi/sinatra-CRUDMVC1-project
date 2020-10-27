@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201027181748) do
+ActiveRecord::Schema.define(version: 20201027182629) do
 
   create_table "nailpolishes", force: :cascade do |t|
     t.string  "name"
     t.string  "brand"
     t.string  "color"
     t.integer "user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.text   "email"
   end
 
 end

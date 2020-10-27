@@ -1,5 +1,5 @@
 class NailPolish < ActiveRecord::Base
-    belongs_to :users
+    belongs_to :user
     attr_accessor :name, :brand, :color
 
     @@all = []
