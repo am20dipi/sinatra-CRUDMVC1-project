@@ -58,4 +58,12 @@ class NailPolishesController < ApplicationController
         end
     end
 
+
+    delete '/nailpolishes/:id' do 
+        @nailpolish = NailPolish.find_by(id: params[:id])
+
+        @nailpolish.destroy 
+        redirect '/nailpolishes'
+    end
+
 end
