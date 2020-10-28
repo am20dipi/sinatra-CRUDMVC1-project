@@ -59,21 +59,28 @@ class NailPolishesController < ApplicationController
     end
     
     get '/nailpolishes/:id' do # :id adds the key to the params hash
-        @nailpolish = NailPolish.find_by(id: params[:id])
+        if logged_in?
+            @nailpolish = current.user.nailpolishes.find_by(id: params[:id])
     
-        if @nailpolish 
-            erb :'nailpolishes/show' #renders the show view
+            if @nailpolish 
+                erb :'nailpolishes/show' #renders the show view
+            else
+                redirect '/nailpolishes' #redirects to the route
+            end
         else
-            redirect '/nailpolishes' #redirects to the route
+            redirect '/login'
         end
     end
 
 
     delete '/nailpolishes/:id' do 
-        @nailpolish = NailPolish.find_by(id: params[:id])
-
-        @nailpolish.destroy 
-        redirect '/nailpolishes'
+        if logged_in?
+            @nailpolish = current_user.nailpolishes.find_by(id: params[:id])
+            @nailpolish.destroy 
+            redirect '/nailpolishes'
+        else
+            redirect '/login'
+        end
     end
 
 end
