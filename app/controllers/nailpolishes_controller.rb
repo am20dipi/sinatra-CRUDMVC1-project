@@ -10,7 +10,7 @@ class NailPolishesController < ApplicationController
     end
 
     get '/nailpolishes/new' do 
-        if logged_in? || signed_up?
+        if logged_in? 
             erb :'nailpolishes/new'
         else
             redirect '/login'
@@ -27,7 +27,7 @@ class NailPolishesController < ApplicationController
     end
   
     get '/nailpolishes/:id' do # :id puts a key in the params hash
-        @nailpolish = NailPolish.find_by(id: params[:id])
+        @nailpolish = current_user.nailpolishes.find_by(id: params[:id])
 
         if @nailpolish
             erb :show 
