@@ -3,7 +3,7 @@ class NailPolishesController < ApplicationController
     get '/nailpolishes' do 
         binding.pry
         if logged_in? 
-            @nailpolishes = current_user.nailpolishes #set to an instance variable so it can be seen by the view; asking to give the collection of the logged-in users only
+            @nailpolishes = current_user.nailpolishes.all #set to an instance variable so it can be seen by the view; asking to give the collection of the logged-in users only
             erb :'nailpolishes/index' 
         else 
             redirect '/login'
@@ -27,11 +27,10 @@ class NailPolishesController < ApplicationController
         end
     end
   
-    get '/nailpolishes/:id' do # :id puts a key in the params hash
+    get '/nailpolishes/:id' do  # :id puts a key in the params hash
         @nailpolish = current_user.nailpolishes.find_by(id: params[:id])
-
         if @nailpolish
-            erb :show 
+            erb :'nailpolishes/show' 
         else
             redirect '/nailpolishes'
         end
