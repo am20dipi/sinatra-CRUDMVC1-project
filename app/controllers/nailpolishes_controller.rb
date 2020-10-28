@@ -1,23 +1,20 @@
 class NailPolishesController < ApplicationController
   
     get '/nailpolishes' do 
-        @nailpolishes = NailPolish.all #set to an instance variable so it can be seen by the view
-        erb :index 
-    end
-  
-    get '/nailpolishes/:id' do # :id puts a key in the params hash
-        @nailpolish = NailPolish.find_by(id: params[:id])
-
-        if @nailpolish
-            erb :show 
-        else
-            redirect '/nailpolishes'
+        if logged_in? 
+            @nailpolishes = current_user.nailpolishes #set to an instance variable so it can be seen by the view; asking to give the collection of the logged-in users only
+            erb :'nailpolishes/index' 
+        else 
+            redirect '/login'
         end
     end
-  
+
     get '/nailpolishes/new' do 
-        @users = User.all #gives access to the users
-        erb :new
+        if logged_in?
+            erb :'nailpolishes/new'
+        else
+            redirect '/login'
+        end
     end
 
     post '/nailpolishes' do 
@@ -29,10 +26,20 @@ class NailPolishesController < ApplicationController
             redirect '/nailpolish/new'
         end
     end
+  
+    get '/nailpolishes/:id' do # :id puts a key in the params hash
+        @nailpolish = NailPolish.find_by(id: params[:id])
+
+        if @nailpolish
+            erb :show 
+        else
+            redirect '/nailpolishes'
+        end
+    end
     
     get '/nailpolishes/:id/edit' do 
         @nailpolish = NailPolish.find_by(id: params[:id]) 
-        erb :edit 
+        erb :'nailpolishes/edit' 
     end
     
     patch '/nailpolishes/:id' do 
@@ -48,7 +55,7 @@ class NailPolishesController < ApplicationController
         @nailpolish = NailPolish.find_by(id: params[:id])
     
         if @nailpolish 
-            erb :show
+            erb :'nailpolishes/show'
         else
             redirect '/nailpolishes'
         end
