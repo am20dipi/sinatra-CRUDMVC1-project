@@ -40,7 +40,12 @@ class NailPolishesController < ApplicationController
     end
     
     patch '/nailpolishes/:id' do 
-        binding.pry
+        nailpolish = NailPolish.find_by(id: params[:id])
+        if nailpolish.update(name: params[:name], brand: params[:brand], color: params[:color])
+            redirect "/nailpolishes/#{nailpolish.id}"
+        else
+            redirect "/nailpolishes/#{nailpolish.id}/edit"
+        end
     end
     
     get '/nailpolishes/:id' do # :id adds the key to the params hash
