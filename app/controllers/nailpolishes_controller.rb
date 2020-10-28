@@ -76,7 +76,9 @@ class NailPolishesController < ApplicationController
     delete '/nailpolishes/:id' do 
         if logged_in?
             @nailpolish = current_user.nailpolishes.find_by(id: params[:id])
-            @nailpolish.destroy 
+            if @nailpolish
+                @nailpolish.destroy 
+            end
             redirect '/nailpolishes'
         else
             redirect '/login'
