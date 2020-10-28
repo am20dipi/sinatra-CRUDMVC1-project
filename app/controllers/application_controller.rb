@@ -13,6 +13,14 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  get '/registrations/signup' do 
+    erb :"registrations/signup"
+  end 
+
+  post '/registrations' do 
+    erb :"users/home"
+  end
+
   helpers do 
     def logged_in?
       !!session[:user_id] #double bang will result in true or false; is someone logged in? is a user id in the session hash??

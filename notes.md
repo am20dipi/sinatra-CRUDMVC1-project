@@ -74,3 +74,13 @@ attr_accessor :name, :brand, :color
     def self.all
         @@all
     end
+
+
+
+    this was in new.erb
+
+    <label>Select User:</label> 
+        <select name="user_id">
+            <% @users.each do |user|%>
+                <option value="<%= user.id %>"><%= user.name %></option>
+            <% end %>

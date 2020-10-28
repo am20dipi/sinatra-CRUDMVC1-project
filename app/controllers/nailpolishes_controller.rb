@@ -10,7 +10,7 @@ class NailPolishesController < ApplicationController
     end
 
     get '/nailpolishes/new' do 
-        if logged_in?
+        if logged_in? || signed_up?
             erb :'nailpolishes/new'
         else
             redirect '/login'
