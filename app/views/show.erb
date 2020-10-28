@@ -8,7 +8,12 @@
         <p><%= @nailpolish.color %></p>
         <a href="/nailpolishes/<%= @nailpolish.id %>/edit">Edit</a>
         <br>
-        <a href="/nailpolishes/<%= @nailpolish.id %>" method="DELETE">Delete</a>
+        <form method="POST" action="/nailpolishes/<%= @nailpolishes.id %>">
+            <input type="hidden" id="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete">
+        </form>
+        <!-- <a href="/nailpolishes/<%= @nailpolish.id %>" action="DELETE">Delete</a> -->
+        <br>
         <a href="/nailpolishes">Go Back</a>
         
     </body>

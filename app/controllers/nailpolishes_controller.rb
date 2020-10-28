@@ -44,7 +44,7 @@ class NailPolishesController < ApplicationController
         if nailpolish.update(name: params[:name], brand: params[:brand], color: params[:color])
             redirect "/nailpolishes/#{nailpolish.id}"
         else
-            redirect "/nailpolishes/#{nailpolish.id}/edit"
+            redirect '/nailpolishes/#{nailpolish.id}/edit'
         end
     end
     
