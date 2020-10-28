@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 
-<h2> Edit a Nail Polish </h2>
+<h2> Edit Your Nail Polish </h2>
 <hr>
 <br>
     <body>
         <form action="/nailpolishes/<%= @nailpolish.id %>" method="POST">
             <input type="hidden" id="hidden" name="_method" value="PATCH"> <!-- RackMethodOverride -->
-            <label>Title: <input type="text" name="name" value="<%= @nailpolish.name %>"></label><br>
+            <label>Name: <input type="text" name="name" value="<%= @nailpolish.name %>"></label><br>
             <label>Brand: <input type="text" id="brand" name="brand" value="<%= @nailpolish.brand %>"</input</label><br>
             <label>Color: <input type="text" id="color" name="color" value="<%= @nailpolish.color %>"</input</label><br>
             <input type="submit">
