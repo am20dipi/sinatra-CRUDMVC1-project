@@ -1,9 +1,7 @@
-# frozen_string_literal: true
+
 
 source "https://rubygems.org"
 
-
-# gem "rails"
 
 gem 'sinatra'
 gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'

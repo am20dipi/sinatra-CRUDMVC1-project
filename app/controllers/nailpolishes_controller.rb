@@ -1,8 +1,4 @@
 class NailPolishesController < ApplicationController
-    
-    get '/' do
-        erb :welcome
-    end
   
     get '/nailpolishes' do 
         @nailpolishes = NailPolish.all #set to an instance variable so it can be seen by the view
