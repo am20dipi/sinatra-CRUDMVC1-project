@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h4><%= @nailpolish.name %></h4>
+        <h4></h4>
         <hr>
         <br>
-        <p><%= @nailpolish.brand %></p>
-        <p><%= @nailpolish.color %></p>
+        <p>Name: <%= @nailpolish.name %></p>
+        <p>Brand: <%= @nailpolish.brand %></p>
+        <p>Color: <%= @nailpolish.color %></p>
         <a href="/nailpolishes/<%= @nailpolish.id %>/edit">Edit</a>
+        <br>
         <br>
         <form method="POST" action="/nailpolishes/id">
             <input type="hidden" id="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete">
+
         </form>
         <!-- <a href="/nailpolishes/<%= @nailpolish.id %>" action="DELETE">Delete</a> -->
         <br>
