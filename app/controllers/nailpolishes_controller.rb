@@ -18,8 +18,7 @@ class NailPolishesController < ApplicationController
     end
 
     post '/nailpolishes' do 
-        user = User.find_by(id: params[:user_id])
-        nailpolish = user.nailpolishes.build(params) # .build creates but does NOT SAVE
+        nailpolish = current_user.nailpolishes.build(params) # .build creates but does NOT SAVE
         if nailpolish.save # .save returns true or false
             redirect "/nailpolishes/#{nailpolish.id}"
         else
@@ -38,12 +37,20 @@ class NailPolishesController < ApplicationController
     end
     
     get '/nailpolishes/:id/edit' do 
-        @nailpolish = NailPolish.find_by(id: params[:id]) 
-        erb :'nailpolishes/edit' 
+        if logged_in? 
+            @nailpolish = current_user.nailpolishes.find_by(id: params[:id]) 
+            if @nailpolish 
+                erb :'nailpolishes/edit'
+            else
+                redirect '/nailpolishes'
+            end
+        else 
+            redirect '/login'
+        end
     end
     
-    patch '/nailpolishes/:id' do 
-        nailpolish = NailPolish.find_by(id: params[:id])
+    patch '/nailpolishes/:id' do #patch comes from rackmethodoverride; it is looking for key "_method"; if so the value associate is patch
+        nailpolish = current_user.nailpolishes.find_by(id: params[:id])
         if nailpolish.update(name: params[:name], brand: params[:brand], color: params[:color])
             redirect "/nailpolishes/#{nailpolish.id}"
         else
@@ -55,9 +62,9 @@ class NailPolishesController < ApplicationController
         @nailpolish = NailPolish.find_by(id: params[:id])
     
         if @nailpolish 
-            erb :'nailpolishes/show'
+            erb :'nailpolishes/show' #renders the show view
         else
-            redirect '/nailpolishes'
+            redirect '/nailpolishes' #redirects to the route
         end
     end
 

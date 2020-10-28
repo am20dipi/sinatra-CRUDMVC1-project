@@ -1,5 +1,6 @@
 
 require './config/environment'
+require 'sinatra/base'
 
 
 if ActiveRecord::Migrator.needs_migration?
