@@ -35,7 +35,6 @@ class NailPolishesController < ApplicationController
     end
     
     get '/nailpolishes/:id/edit' do 
-        @users = User.all
         @nailpolish = NailPolish.find_by(id: params[:id]) 
         erb :edit 
     end

@@ -6,7 +6,7 @@
 <br>
     <body>
         <form action="/nailpolishes/<%= @nailpolish.id %>" method="POST">
-            <input type="hidden" id="hidden" name="_method" value="PATCH">
+            <input type="hidden" id="hidden" name="_method" value="PATCH"> <!-- RackMethodOverride -->
             <label>Title: <input type="text" name="name" value="<%= @nailpolish.name %>"></label><br>
             <label>Brand: <input type="text" id="brand" name="brand" value="<%= @nailpolish.brand %>"</input</label><br>
             <label>Color: <input type="text" id="color" name="color" value="<%= @nailpolish.color %>"</input</label><br>
@@ -14,3 +14,5 @@
         </form>
     </body>
 </html>
+
+<!-- the difference between edit and new forms is that the edit form has values, alongside name and type>
