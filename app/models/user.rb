@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
-    #validates :email, :password, presence: true
+    validates :name, :email, :password, presence: true
     has_secure_password
     has_many :nailpolishes
+    attr_accessor :name, :email, :password
 
     @@all = []
 
-    def initialize(email, password)
+    def initialize(name, email, password)
+        @name = params[:name]
         @email = params[:email]
         @password = params[:password]
         @@all << self
