@@ -8,8 +8,9 @@ end
 
 
 
-#use Rack::MethodOverride
+use Rack::MethodOverride #middleware, override a post request and hijack it and use it for patch
 use NailPolishesController
 use UsersController
 use SessionsController
+
 run ApplicationController
