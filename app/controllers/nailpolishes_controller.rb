@@ -1,6 +1,7 @@
 class NailPolishesController < ApplicationController
   
     get '/nailpolishes' do 
+        binding.pry
         if logged_in? 
             @nailpolishes = current_user.nailpolishes #set to an instance variable so it can be seen by the view; asking to give the collection of the logged-in users only
             erb :'nailpolishes/index' 
@@ -18,11 +19,11 @@ class NailPolishesController < ApplicationController
     end
 
     post '/nailpolishes' do 
-        nailpolish = current_user.nailpolishes.build(params) # .build creates but does NOT SAVE
+        nailpolish = current_user.nailpolishes.create(params) 
         if nailpolish.save # .save returns true or false
             redirect "/nailpolishes/#{nailpolish.id}"
         else
-            redirect '/nailpolish/new'
+            redirect '/nailpolishes/new'
         end
     end
   
@@ -54,7 +55,7 @@ class NailPolishesController < ApplicationController
         if nailpolish.update(name: params[:name], brand: params[:brand], color: params[:color])
             redirect "/nailpolishes/#{nailpolish.id}"
         else
-            redirect '/nailpolishes/#{nailpolish.id}/edit'
+            redirect "/nailpolishes/#{nailpolish.id}/edit"
         end
     end
     

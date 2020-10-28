@@ -84,3 +84,21 @@ attr_accessor :name, :brand, :color
             <% @users.each do |user|%>
                 <option value="<%= user.id %>"><%= user.name %></option>
             <% end %>
+
+
+
+
+    attr_accessor :name, :brand, :color
+
+    @@all = []
+
+    def initialize(name, brand, color)
+        @name = params[:name]
+        @brand = params[:brand]
+        @color = params[:color]
+        @@all << self
+    end
+
+    def self.all 
+        @@all << self
+    end

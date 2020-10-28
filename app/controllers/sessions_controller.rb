@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password]) #authenticate method is bcrypt working with AR 
             session[:user_id] = user.id #this is the line of code that shows that a user logged in!! 
-            redirect '/nailpolishes' #to correctly log in the params, we put it in the session. we are persisting it to the next request
+            erb :'users/home' #to correctly log in the params, we put it in the session. we are persisting it to the next request
         else
             redirect '/login'
         end
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     end
 
     get '/registrations/signup' do 
-        erb :"registrations/signup"
+        erb :'registrations/signup'
       end 
     
     post '/registrations' do 
