@@ -10,7 +10,7 @@
         <a href="/nailpolishes/<%= @nailpolish.id %>/edit">Edit</a>
         <br>
         <br>
-        <form method="POST" action="/nailpolishes/id">
+        <form method="POST" action="/nailpolishes/<%= @nailpolish.id %>">
             <input type="hidden" id="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete">
 
