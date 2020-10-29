@@ -2,7 +2,7 @@
 
 Version 1.0.0 // November 2020
 
-## Introduction
+## Overview
 
 The Nail Guru is a Ruby-based, full scale Sinatra application. The goals of the project are to utilize: 
 1. the MVC structure 
