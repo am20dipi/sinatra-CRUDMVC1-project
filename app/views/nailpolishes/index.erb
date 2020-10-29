@@ -2,14 +2,16 @@
 <html>
     <body>
         <h1>Nail Polishes</h1>
+        <h4><i>Click on a nail polish to see more info</i></h4>
         <hr>
         <br>
         <% @nailpolishes.each do |n| %> 
-            <p><a href="/nailpolishes/<%= n.id %>"><%= n.name %></a></p>
+            <p>-  <a href="/nailpolishes/<%= n.id %>"><%= n.name %></a></p>
         <% end %>
-        <a href="/nailpolishes/new">Add a Nail Polish</a>
+        <button><a href="/nailpolishes/new">Add a Nail Polish</a></button>
         <br>
-        <a href="/logout">Sign Out</a>
+        <br>
+        <button><a href="/logout">Sign Out</a></button>
     
     </body>
 </html>

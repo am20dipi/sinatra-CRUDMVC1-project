@@ -7,17 +7,15 @@
         <p>Name: <%= @nailpolish.name %></p>
         <p>Brand: <%= @nailpolish.brand %></p>
         <p>Color: <%= @nailpolish.color %></p>
-        <a href="/nailpolishes/<%= @nailpolish.id %>/edit">Edit</a>
+        <button><a href="/nailpolishes/<%= @nailpolish.id %>/edit"> Edit </a></button>
         <br>
         <br>
         <form method="POST" action="/nailpolishes/<%= @nailpolish.id %>">
             <input type="hidden" id="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete">
-
         </form>
-        <!-- <a href="/nailpolishes/<%= @nailpolish.id %>" action="DELETE">Delete</a> -->
         <br>
-        <a href="/nailpolishes">Go Back</a>
+        <button><a href="/nailpolishes"> Go Back </a></button>
         
     </body>
 </html>
