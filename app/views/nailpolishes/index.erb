@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
 
-<link rel="stylesheets" type="text/css" href="/main.css" />
-<img src="daisynail.png" style="float:right"class="center">
-
     <body>
         <h1>Welcome, <%= current_user.name %> !</h1>
         <h4><i>Click on a nail polish to see more information, to make changes or delete.</i></h4>
         <hr>
         <br>
+        <link rel="stylesheets" type="text/css" href="/main.css" />
+        <img src="daisynail.png" style="float:right"class="center">
         <ul>
         <% @nailpolishes.each do |n| %> 
-            <p><a href="/nailpolishes/<%= n.id %>"><%= n.name %></a></p>
+            <p>- <a href="/nailpolishes/<%= n.id %>"><%= n.name %></a></p>
         <% end %>
         </ul>
         <button><a href="/nailpolishes/new">Add a Nail Polish</a></button>
@@ -20,4 +19,6 @@
         <button><a href="/logout">Sign Out</a></button>
     
     </body>
+
+    
 </html>
