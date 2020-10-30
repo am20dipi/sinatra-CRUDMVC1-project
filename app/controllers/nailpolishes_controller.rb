@@ -2,6 +2,7 @@ class NailPolishesController < ApplicationController
   
     get '/nailpolishes' do 
         if logged_in? 
+            #binding.pry
             @nailpolishes = current_user.nailpolishes #set to an instance variable so it can be seen by the view; asking to give the collection of the logged-in users only
             erb :'nailpolishes/index' 
         else 
