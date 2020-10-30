@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
 
-    get '/registrations/signup' do 
-        erb :'registrations/signup'
+    get '/signup' do 
+        erb :'users/signup'
       end 
     
-    post '/registrations' do 
+    post '/signup' do 
         @user = User.new(name: params["name"], email: params["email"], password: params["password"])
         @user.save
         session[:id] = @user.id
     
-        redirect '/users/home'
+        redirect '/nailpolishes'
     end
 end

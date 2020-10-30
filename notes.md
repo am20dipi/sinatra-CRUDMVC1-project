@@ -11,7 +11,23 @@
 
 
 
+<DOCTYPE! html>
 
+<link rel="stylesheets" type="text/css" href="/main.css" />
+<img src="daisynail.png" style="float:right"class="center">
+
+
+
+<h1> Welcome! </h1>
+<hr>
+<br>
+<h3>Menu</h3>
+<br>
+    -  <a href="/nailpolishes/new">Add a Nail Polish</a>
+    <br>
+    - <a href="/nailpolishes">Look at Your Collection</a>
+    <br>
+    - <a href="/">Sign Out</a>
 
 
 
