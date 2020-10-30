@@ -30,14 +30,19 @@ class NailPolishesController < ApplicationController
         end
     end
   
-    #get '/nailpolishes/:id' do  # :id puts a key in the params hash
-       # @nailpolish = current_user.nailpolishes.find_by(id: params[:id])
-       # if @nailpolish
-           # erb :'nailpolishes/show' 
-        #else
-           # redirect '/nailpolishes'
-        #end
-   # end
+    get '/nailpolishes/:id' do # :id adds the key to the params hash
+        if logged_in?
+            @nailpolish = current_user.nailpolishes.find_by(id: params[:id])
+    
+            if @nailpolish 
+                erb :'nailpolishes/show' #renders the show view
+            else
+                redirect '/nailpolishes' #redirects to the route
+            end
+        else
+            redirect '/login'
+        end
+    end
     
     get '/nailpolishes/:id/edit' do 
         if logged_in? 
@@ -53,33 +58,16 @@ class NailPolishesController < ApplicationController
     end
     
     patch '/nailpolishes/:id' do #patch comes from rackmethodoverride; it is looking for key "_method"; if so the value associate is patch
-        nailpolish = current_user.nailpolishes.find_by(id: params[:id])
-        if nailpolish
-            if nailpolish.update(name: params[:name], brand: params[:brand], color: params[:color])
-                redirect "/nailpolishes/#{nailpolish.id}"
-            else
-                redirect "/nailpolishes/#{nailpolish.id}/edit"
-            end
-        else
-            redirect '/nailpolishes'
-        end
-    end
-    
-    get '/nailpolishes/:id' do # :id adds the key to the params hash
-        binding.pry
         if logged_in?
-            @nailpolish = current_user.nailpolishes.find_by(id: params[:id])
-    
-            if @nailpolish 
-                erb :'nailpolishes/show' #renders the show view
-            else
-                redirect '/nailpolishes' #redirects to the route
-            end
+            nailpolish = current_user.nailpolishes.find_by(id: params[:id])
+            nailpolish.update(name: params[:name], brand: params[:brand], color: params[:color])
+                
+            redirect "/nailpolishes/#{nailpolish.id}"
         else
-            redirect '/login'
+            redirect "/login"
         end
     end
-
+    
 
     delete '/nailpolishes/:id' do 
         if logged_in?
