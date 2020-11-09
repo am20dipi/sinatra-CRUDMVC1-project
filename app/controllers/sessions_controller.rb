@@ -1,14 +1,14 @@
 class SessionsController < ApplicationController
 
     get '/login' do 
-        erb :'sessions/login' #rendering 
+        erb :'sessions/login' 
     end
 
     post '/login' do 
         user = User.find_by(email: params[:email])
-        if user && user.authenticate(params[:password]) #authenticate method is bcrypt working with AR 
-            session[:user_id] = user.id #this is the line of code that shows that a user logged in!! 
-            redirect '/nailpolishes' #to correctly log in the params, we put it in the session. we are persisting it to the next request
+        if user && user.authenticate(params[:password]) 
+            session[:user_id] = user.id 
+            redirect '/nailpolishes' 
         else
             redirect '/login'
         end

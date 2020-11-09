@@ -2,8 +2,8 @@ class NailPolishesController < ApplicationController
   
     get '/nailpolishes' do 
         if logged_in? 
-            binding.pry
-            @nailpolishes = current_user.nailpolishes #set to an instance variable so it can be seen by the view; asking to give the collection of the logged-in users only
+            #binding.pry
+            @nailpolishes = current_user.nailpolishes 
             erb :'nailpolishes/index' 
         else 
             redirect '/login'
@@ -21,7 +21,7 @@ class NailPolishesController < ApplicationController
     post '/nailpolishes' do 
         if logged_in?
             nailpolish = current_user.nailpolishes.build(params) 
-            if nailpolish.save # .save returns true or false
+            if nailpolish.save 
                 redirect "/nailpolishes/#{nailpolish.id}"
             else
                 redirect '/nailpolishes/new'
@@ -31,14 +31,14 @@ class NailPolishesController < ApplicationController
         end
     end
   
-    get '/nailpolishes/:id' do # :id adds the key to the params hash
+    get '/nailpolishes/:id' do 
         if logged_in?
             @nailpolish = current_user.nailpolishes.find_by(id: params[:id])
     
             if @nailpolish 
-                erb :'nailpolishes/show' #renders the show view
+                erb :'nailpolishes/show' 
             else
-                redirect '/nailpolishes' #redirects to the route
+                redirect '/nailpolishes' 
             end
         else
             redirect '/login'
@@ -58,7 +58,7 @@ class NailPolishesController < ApplicationController
         end
     end
     
-    patch '/nailpolishes/:id' do #patch comes from rackmethodoverride; it is looking for key "_method"; if so the value associate is patch
+    patch '/nailpolishes/:id' do 
         if logged_in?
             nailpolish = current_user.nailpolishes.find_by(id: params[:id])
             nailpolish.update(name: params[:name], brand: params[:brand], color: params[:color])

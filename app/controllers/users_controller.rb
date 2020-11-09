@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user = User.new(name: params["name"], email: params["email"], password: params["password"])
         @user.save
         session[:user_id] = @user.id
-        binding.pry
+        #binding.pry
         redirect '/nailpolishes'
     end
 end
