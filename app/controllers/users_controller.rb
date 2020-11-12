@@ -6,9 +6,11 @@ class UsersController < ApplicationController
     
     post '/signup' do 
         @user = User.new(name: params["name"], email: params["email"], password: params["password"])
-        @user.save
-        session[:user_id] = @user.id
-        #binding.pry
-        redirect '/nailpolishes'
+        if @user.save 
+            session[:user_id] = @user.id
+            redirect '/nailpolishes'
+        else 
+            redirect '/signup'
+        end
     end
 end

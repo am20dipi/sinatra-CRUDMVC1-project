@@ -61,6 +61,7 @@ class NailPolishesController < ApplicationController
     patch '/nailpolishes/:id' do 
         if logged_in?
             nailpolish = current_user.nailpolishes.find_by(id: params[:id])
+            binding.pry
             nailpolish.update(name: params[:name], brand: params[:brand], color: params[:color])
                 
             redirect "/nailpolishes/#{nailpolish.id}"
